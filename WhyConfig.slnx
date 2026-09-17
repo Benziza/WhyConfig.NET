@@ -1,8 +1,10 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/WhyConfig.Cli/WhyConfig.Cli.csproj" />
     <Project Path="src/WhyConfig.Core/WhyConfig.Core.csproj" />
   </Folder>
   <Folder Name="/tests/">
+    <Project Path="tests/WhyConfig.Cli.Tests/WhyConfig.Cli.Tests.csproj" />
     <Project Path="tests/WhyConfig.Core.Tests/WhyConfig.Core.Tests.csproj" />
   </Folder>
 </Solution>
