@@ -1,0 +1,32 @@
+name: Publish NuGet tool
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nuget-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.4xx'
+      - run: dotnet test WhyConfig.slnx -c Release
+      - run: dotnet pack src/WhyConfig.Cli/WhyConfig.Cli.csproj -c Release --no-restore -o artifacts
+      - name: Publish to NuGet.org
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          if [ -z "$NUGET_API_KEY" ]; then
+            echo "Set the NUGET_API_KEY repository secret before publishing." >&2
+            exit 1
+          fi
+          dotnet nuget push artifacts/WhyConfig.NET.*.nupkg --source https://api.nuget.org/v3/index.json
