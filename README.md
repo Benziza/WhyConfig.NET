@@ -97,5 +97,3 @@ The CLI masks values for keys with names such as `Password`, `Token`, `Secret`, 
 dotnet test WhyConfig.slnx -c Release
 dotnet pack src/WhyConfig.Cli -c Release -o artifacts
 ```
-
-See [the Darija introduction](docs/README.darija.md) for a short explanation of the problem and the tool.
