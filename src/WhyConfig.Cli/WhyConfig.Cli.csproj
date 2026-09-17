@@ -19,15 +19,14 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>whyconfig</ToolCommandName>
     <PackageId>WhyConfig.NET</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>Benziza</Authors>
     <Description>Explain .NET configuration provider precedence for a key.</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="../../README.md" Pack="true" PackagePath="/" />
-    <None Include="../../assets/whyconfig-demo.gif" Pack="true" PackagePath="assets/" />
+    <None Include="../../docs/NUGET_README.md" Pack="true" PackagePath="README.md" />
   </ItemGroup>
 
 </Project>
