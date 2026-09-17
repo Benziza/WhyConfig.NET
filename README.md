@@ -4,15 +4,21 @@ See which .NET configuration source set a value, and which values it replaced.
 
 ![Animated demo of whyconfig explaining Database:Host](assets/whyconfig-demo.gif)
 
-## Try it
+## Install
 
-Requires the .NET 10 SDK. From this repository, run:
+Requires the .NET 10 SDK.
 
 ```bash
-dotnet run --project src/WhyConfig.Cli -- explain Database:Host --project path/to/YourApp --environment Development
+dotnet tool install -g WhyConfig.NET
 ```
 
-The CLI checks the project's `appsettings` files, Development User Secrets, and current environment variables. Run `dotnet run --project src/WhyConfig.Cli -- --help` for options.
+## Use
+
+```bash
+whyconfig explain Database:Host --project path/to/YourApp --environment Development
+```
+
+The CLI checks the project's `appsettings` files, Development User Secrets, and current environment variables. Run `whyconfig --help` for options.
 
 For the exact configuration of a running app, use `WhyConfig.Core` with its `IConfigurationRoot`:
 
