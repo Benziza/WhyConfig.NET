@@ -92,7 +92,15 @@ public static class CliApplication
 
     private static bool IsSensitiveKey(string key)
     {
-        var leaf = key.Split(':').Last().Replace("_", "", StringComparison.Ordinal).ToLowerInvariant();
+        var segments = key.Split(':')
+            .Select(segment => segment.Replace("_", "", StringComparison.Ordinal).ToLowerInvariant())
+            .ToArray();
+        if (segments.Any(segment => segment is "connectionstrings" or "credentials" or "secrets"))
+        {
+            return true;
+        }
+
+        var leaf = segments[^1];
         return leaf is "key" or "credential" or "connectionstring"
             || leaf.Contains("password", StringComparison.Ordinal)
             || leaf.Contains("secret", StringComparison.Ordinal)

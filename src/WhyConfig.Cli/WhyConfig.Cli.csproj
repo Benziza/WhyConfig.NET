@@ -20,6 +20,11 @@
     <ToolCommandName>whyconfig</ToolCommandName>
     <PackageId>WhyConfig.NET</PackageId>
     <Description>Explain .NET configuration provider precedence for a key.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
 
 </Project>
