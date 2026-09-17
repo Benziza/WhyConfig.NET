@@ -53,6 +53,20 @@ public class CliApplicationTests
     }
 
     [Fact]
+    public void RedactsConnectionStringsSection()
+    {
+        using var project = new TempProject();
+        project.Write("appsettings.json", """{"ConnectionStrings":{"Default":"Server=db;Password=sensitive"}}""");
+
+        var (code, output, _) = Run("explain", "ConnectionStrings:Default", "--project", project.Path,
+            "--environment", "Production");
+
+        Assert.Equal(0, code);
+        Assert.Contains("<redacted>", output);
+        Assert.DoesNotContain("sensitive", output);
+    }
+
+    [Fact]
     public void ReportsMissingKeyWithExitCodeOne()
     {
         using var project = new TempProject();
