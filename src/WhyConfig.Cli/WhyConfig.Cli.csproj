@@ -19,6 +19,8 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>whyconfig</ToolCommandName>
     <PackageId>WhyConfig.NET</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>WhyConfig.NET</Authors>
     <Description>Explain .NET configuration provider precedence for a key.</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
